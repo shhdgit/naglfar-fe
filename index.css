@@ -59,13 +59,18 @@ body {
   display: none;
 }
 
-#datepicker {
+.datepicker {
   height: var(--ui-height);
   border-radius: var(--ui-border-radius);
   font-family: var(--base-font-family);
   font-size: var(--ui-font-size);
   border: 1px solid var(--ui-border-color);
-  width: 350px;
+  width: 256px;
   transition: all var(--t-duration) var(--t-easing);
   padding: 0 0.7em;
+}
+
+#clean_datepicker {
+  color: #0d6efd;
+  cursor: pointer;
 }

@@ -2,7 +2,13 @@ import { Chart } from '//unpkg.com/chart.js?module'
 
 import { COLORS } from '../../util/color.mjs'
 
+let chart
+
 export function renderPieChart(dom, topNData, othersCount) {
+  if (chart) {
+    chart.destroy()
+  }
+
   const config = {
     type: 'pie',
     data: {
@@ -26,5 +32,6 @@ export function renderPieChart(dom, topNData, othersCount) {
     },
   }
 
-  return new Chart(dom, config)
+  chart = new Chart(dom, config)
+  return chart
 }

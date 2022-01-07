@@ -5,10 +5,17 @@ import { renderTrendChart } from './trend_chart.mjs'
 import { renderTable } from './table.mjs'
 
 export async function renderEventList() {
-  const stop = Math.floor(Date.now() / 1000)
-  const start = stop - 30 * 24 * 60 * 60
+  let start, stop
   const params = getSearchParams()
   const fid = params.fid
+
+  if (params.start && params.stop) {
+    start = parseInt(params.start)
+    stop = parseInt(params.stop)
+  } else {
+    stop = Math.floor(Date.now() / 1000)
+    start = stop - 30 * 24 * 60 * 60
+  }
 
   globalLoading.show()
   const [data, threshold, changepoints, { logs, stats }] = await Promise.all([

@@ -75,25 +75,25 @@
 
     <div id="hide_when_loading">
       <div class="row">
-        <p class="col-auto me-auto">
-          Similarity fragments: <span id="similarity_frags"></span>
-        </p>
+        <div class="col-auto me-auto" id="similarity_frags"></div>
         <div class="col-auto">
-          <!-- <input type="text" id="datepicker" placeholder="Choose date"></input> -->
+          <input type="text" class="datepicker" id="datepicker_start" placeholder="Choose date start"></input>
+          <input type="text" class="datepicker" id="datepicker_end" placeholder="Choose date end"></input>
+          <span id="clean_datepicker">clear</span>
         </div>
       </div>
+    </div>
 
-      <div class="row mb-3">
-        <canvas id="trend_chart"></canvas>
+    <div class="row mb-3">
+      <canvas id="trend_chart"></canvas>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <canvas id="pie_chart"></canvas>
       </div>
-
-      <div class="row">
-        <div class="col-6">
-          <canvas id="pie_chart"></canvas>
-        </div>
-        <div class="col-6">
-          <div id="table"></div>
-        </div>
+      <div class="col-6">
+        <div id="table"></div>
       </div>
     </div>
   </body>

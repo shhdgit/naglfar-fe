@@ -2,6 +2,8 @@ import { Chart } from '//unpkg.com/chart.js?module'
 import '../../util/chart_date_adapter.mjs'
 import { color, NAMED_COLORS } from '../../util/color.mjs'
 
+let chart
+
 const scales = {
   x: {
     position: 'bottom',
@@ -23,6 +25,10 @@ const scales = {
 }
 
 export function renderTrendChart(dom, data, topNData) {
+  if (chart) {
+    chart.destroy()
+  }
+
   const ds = data.map((d) => {
     const topNDataIndex = topNData.findIndex((td) => td.event_id === d.event_id)
     return {
@@ -61,5 +67,6 @@ export function renderTrendChart(dom, data, topNData) {
     },
   }
 
-  return new Chart(dom, config)
+  chart = new Chart(dom, config)
+  return chart
 }
