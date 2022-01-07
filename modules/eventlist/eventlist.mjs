@@ -3,6 +3,7 @@ import { getSearchParams } from '../../util/url_search_params.mjs'
 import { globalLoading } from '../../util/loading.mjs'
 import { renderTrendChart } from './trend_chart.mjs'
 import { renderTable } from './table.mjs'
+import { renderPieChart } from './pie_chart.mjs'
 
 export async function renderEventList() {
   let start, stop
@@ -28,15 +29,34 @@ export async function renderEventList() {
   ])
   globalLoading.hide()
 
-  //   const [similarityData] = Promise.all(
-  //     Object.entries(stats)
-  //       .filter(([k, v]) => v > 1 && v < 10)
-  //       .map(([k, v]) => {
-  //         return fetchJSON(
-  //           `${start}/${stop}/fragments/${fid}/events/${params.eid}/fields/${k}/logs/stats`,
-  //         )
-  //       }),
-  //   )
+  const filteredStats = Object.entries(stats).filter(
+    ([k, v]) => v > 1 && v < 10,
+  )
+  if (filteredStats.length) {
+    const statsDetail = await Promise.all(
+      filteredStats.map(([k, v]) => {
+        return fetchJSON(
+          `${start}/${stop}/fragments/${fid}/events/${params.eid}/fields/${k}/logs/stats`,
+        ).then((d) => ({ key: k, data: d }))
+      }),
+    )
+
+    const fragment = document.createDocumentFragment()
+    statsDetail.forEach((d) => {
+      const div = document.createElement('div')
+      div.classList.add('col-3')
+      const c = document.createElement('canvas')
+      c.id = d.key
+
+      div.appendChild(c)
+      fragment.appendChild(div)
+    })
+    document.querySelector('#pie_chart').appendChild(fragment)
+    statsDetail.forEach((d) => {
+      console.log(d)
+      renderPieChart(document.querySelector(`#${d.key}`), d.key, d.data)
+    })
+  }
 
   renderTrendChart(
     document.querySelector('#trend_chart'),
