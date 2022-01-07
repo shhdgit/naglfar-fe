@@ -1,0 +1,71 @@
+html {
+  --base-font-size: 16px;
+  --base-line-height: 1.35;
+  --base-color: #333;
+  --color-accent: #26b9ff;
+  --color-accent-semi-transparent: rgba(38, 185, 255, 0.2);
+  --color-accent-almost-transparent: rgba(38, 185, 255, 0.1);
+  --color-accent-darker: #1e83b1;
+  --color-secondary: #6d6d6d;
+  --color-purple: #9e25be;
+  --btn-bg: rgba(38, 185, 255, 0.1);
+  --btn-bg-hover: rgba(38, 185, 255, 0.2);
+  --btn-bg-active: rgba(38, 185, 255, 0.3);
+  --btn-color: var(--color-accent);
+  --btn-color-hover: #14a7ee;
+  --paragraph-offset: 0.7em;
+  --container-offset: 16px;
+  --container-max-width: 1050px;
+  --container-min-width: 1050px;
+  --content-nav-col-width: 256px;
+  --content-col-gap: 32px;
+  --layout-top-offset: 32px;
+  --section-offset: 40px;
+  --header-height: 56px;
+  --header-offset: 32px;
+  --link-color: var(--color-accent);
+  --link-border-color: var(--color-accent-semi-transparent);
+  --link-color-hover: var(--color-accent-darker);
+  --title-line-height: 1.2;
+  --ui-height: 40px;
+  --ui-height-small: 28px;
+  --ui-height-promo: 60px;
+  --ui-border-radius: 4px;
+  --ui-border-color: #ddd;
+  --ui-bg-hover: #f1f1f1;
+  --ui-border-color-focus: var(--color-accent);
+  --ui-font-size: 16px;
+  --nav-link-border-radius: 4px;
+  --t-duration: 0.2s;
+  --t-easing: ease-out;
+  --z-header: 101;
+  --z-language: 102;
+}
+
+body {
+  font-family: 'proxima-nova', sans-serif;
+  color: #333538;
+}
+
+.header {
+  font-family: 'proxima-nova-soft', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #ff6384;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+#datepicker {
+  height: var(--ui-height);
+  border-radius: var(--ui-border-radius);
+  font-family: var(--base-font-family);
+  font-size: var(--ui-font-size);
+  border: 1px solid var(--ui-border-color);
+  width: 350px;
+  transition: all var(--t-duration) var(--t-easing);
+  padding: 0 0.7em;
+}
