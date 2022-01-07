@@ -53,8 +53,11 @@ export async function renderEventList() {
     })
     document.querySelector('#pie_chart').appendChild(fragment)
     statsDetail.forEach((d) => {
-      console.log(d)
-      renderPieChart(document.querySelector(`#${d.key}`), d.key, d.data)
+      renderPieChart(
+        document.querySelector(`#${d.key}`),
+        d.key.split(/^f_/)[1],
+        d.data,
+      )
     })
   }
 
